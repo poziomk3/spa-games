@@ -38,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
+		"locally-unique-id-generator": "^0.1.5",
 		"sass": "^1.69.5"
 	}
 }

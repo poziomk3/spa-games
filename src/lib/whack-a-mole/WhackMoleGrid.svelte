@@ -17,7 +17,7 @@
 
   let mole = -1;
   let dispatcher = createEventDispatcher();
-  let inverval: number;
+  let inverval:NodeJS.Timeout
 
   function updateGrid() {
     if (numberToRender - produced == 0) {

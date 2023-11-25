@@ -1,4 +1,4 @@
-<script>
+<script lang='ts'>
   import WhackMoleGrid from "./WhackMoleGrid.svelte";
   let fieldNumber = 2;
   let intervalDuration = 1000;
