@@ -54,7 +54,7 @@
 
 		const privGameMap = new Map(gameMap.entries());
 		const privTiles = new Map(tiles.entries());
-        position=getKey(position)
+		position = getKey(position);
 		let newPos: [number, number];
 		while (
 			shifter(position)[0] >= 0 &&
@@ -63,26 +63,33 @@
 			shifter(position)[1] < fieldsNumber
 		) {
 			newPos = getKey(shifter(position));
-            
+
 			if (privGameMap.get(newPos) == privGameMap.get(position)) {
-                console.log("ping")
-                for (let [key, value] of privTiles.entries()) {
+				console.log('ping');
+				for (let [key, value] of privTiles.entries()) {
 					if (value == newPos) {
-                        privTiles.delete(key);
+						privTiles.delete(key);
 						break;
 					}
 				}
 				privGameMap.set(newPos, privGameMap.get(newPos)! * 2);
 				privGameMap.set(position, 0);
 				privTiles.set(id, newPos);
-				break;
-			} else if (privGameMap.get(newPos) == 0) {
+				gameMap = new Map(privGameMap.entries());
 
+				tiles = new Map(privTiles.entries());
+				return;
+			} else if (privGameMap.get(newPos) == 0) {
 				privTiles.set(id, newPos);
 				privGameMap.set(newPos, privGameMap.get(position)!);
 				privGameMap.set(position, 0);
 				position = newPos;
-			} else return;
+			} else {
+				gameMap = new Map(privGameMap.entries());
+
+				tiles = new Map(privTiles.entries());
+				return;
+			}
 		}
 
 		gameMap = new Map(privGameMap.entries());
@@ -120,13 +127,6 @@
 	});
 </script>
 
-
-
-
-
-
-
-
 <svelte:window on:keydown={onKeyDown} />
 
 <div class="relative w-[400px] h-[400px] bg-red-200">
@@ -135,16 +135,16 @@
 			<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
 		{/if}
 	{/each} -->
-    {#each tiles as [id, position] (id)}
-    <The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
+	{#each tiles as [id, position] (id)}
+		<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
 	{/each}
 </div>
-{#each tiles as [id, position],index (id)}
+{#each tiles as [id, position], index (id)}
 	<div>{index} essa {position} val{gameMap.get(position)}</div>
 	<div></div>
 {/each}
 nowe
-{#each gameMap  as [position, value],index}
+{#each gameMap as [position, value], index}
 	{#if value != 0}
 		<div>{index}-{value} {position}</div>
 	{/if}
