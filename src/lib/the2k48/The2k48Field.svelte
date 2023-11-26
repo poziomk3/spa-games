@@ -1,23 +1,30 @@
 <script lang="ts">
+	import { scale } from "svelte/transition";
+
 	export let position: [number, number];
 	export let value: number | undefined;
 	export let fieldsNumber: number;
 </script>
 
 <div
+	in:scale
+	out:scale
 	style="--position-x:{position[0]};--position-y:{position[1]};--percentage:{100 / fieldsNumber}"
-	class=" cursor-pointer position absolute scale-90 rounded-xl transition-all duration-150 bg-white/70 n{value?.toString()}"
+	class=" text-[10vmin] cursor-pointer position absolute scale-90 rounded-xl transition-all duration-100 bg-white/70 n{value?.toString()}"
 >
-	<div class=" flex flex-col justify-center items-center relative h-full cursor-pointer">
-		
-		{#if value!=0}
-		<span class=" cursor-pointer text-[2rem] text-bold">{value}</span>
-		
+	<div class=" flex flex-col justify-center items-center relative h-full cursor-pointer ">
+		{#if value != 0}
+			<span class=" cursor-pointer text-bold">{value}</span>
 		{/if}
 	</div>
 </div>
 
 <style lang="scss">
+	@import url('https://fonts.cdnfonts.com/css/clear-sans');
+	* {
+		font-family: 'Clear Sans Medium', sans-serif;
+		font-weight: 900;
+	}
 	.position {
 		height: calc(var(--percentage) * 1%);
 		width: calc(var(--percentage) * 1%);
@@ -25,7 +32,6 @@
 		top: calc(var(--position-y) * calc(var(--percentage) * 1%));
 	}
 
-	
 	.n2 {
 		background-color: #eee4da;
 		color: #776e65;

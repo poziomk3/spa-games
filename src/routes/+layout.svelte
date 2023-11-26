@@ -1,4 +1,9 @@
 <script lang="ts">
     import "../app.css";
+    
     </script>
-    <slot/>
+    <div class='h-screen'> 
+        
+        
+        
+        <slot/></div>

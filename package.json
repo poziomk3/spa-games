@@ -24,6 +24,7 @@
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^9.0.0",
 		"eslint-plugin-svelte": "^2.30.0",
+		"flowbite-svelte-icons": "^0.4.5",
 		"postcss": "^8.4.31",
 		"prettier": "^3.0.0",
 		"prettier-plugin-svelte": "^3.0.0",
@@ -39,6 +40,8 @@
 	"dependencies": {
 		"@sveltejs/adapter-static": "^2.0.3",
 		"locally-unique-id-generator": "^0.1.5",
-		"sass": "^1.69.5"
+		"sass": "^1.69.5",
+		"svelte-icons": "^2.1.0",
+		"svelte-icons-pack": "^2.1.0"
 	}
 }

@@ -1,6 +1,14 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
 	import The2k48Field from '$lib/the2k48/The2k48Field.svelte';
+	import { writable } from 'svelte/store';
+
+
+	export const score = writable(0);
+	$: {
+		const newScore = Array.from(gameMap.values()).reduce((acc, curr) => acc + curr, 0);
+		score.set(newScore);
+	}
 
 	type Position = [number, number];
 	type Arrow = 'ArrowUp' | 'ArrowDown' | 'ArrowLeft' | 'ArrowRight';
@@ -164,6 +172,7 @@
 				changeFlag = iterateTiles('ArrowRight');
 				break;
 		}
+
 		if (changeFlag) spawn();
 	}
 
@@ -172,19 +181,16 @@
 		await tick();
 		spawn();
 	});
+
+	
 </script>
 
 <svelte:window on:keydown={onKeyDown} />
-
-<div class="relative w-[400px] h-[400px] bg-red-200">
+<div class="relative  bg-neutral-600/50  aspect-square md:flex-grow     m-[1rem]">
 	{#each gameMap as [position, value]}
-		<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
+		<The2k48Field {position} value={0} {fieldsNumber} />
 	{/each}
 	{#each tiles as [id, position] (id)}
 		<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
 	{/each}
 </div>
-{#each tiles as [id, position], index (id)}
-	<div>{index} essa {position} val{gameMap.get(position)}</div>
-	<div></div>
-{/each}
