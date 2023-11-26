@@ -1,14 +1,17 @@
 <script lang="ts">
 	export let position: [number, number];
-	export let value: number|undefined;
+	export let value: number | undefined;
 	export let fieldsNumber: number;
 </script>
 
 <div
 	style="--position-x:{position[0]};--position-y:{position[1]};--percentage:{100 / fieldsNumber}"
-	class=" cursor-pointer position absolute bg-blue-500 scale-90 rounded-xl transition-all duration-100"
+	class=" cursor-pointer position absolute scale-90 rounded-xl transition-all duration-100 n{value?.toString()}"
 >
-<div class=" flex flex-col justify-center items-center relative h-full cursor-pointer"><span class=" cursor-pointer  text-[2rem] text-bold ">{value}</span></div></div>
+	<div class=" flex flex-col justify-center items-center relative h-full cursor-pointer">
+		<span class=" cursor-pointer text-[2rem] text-bold">{value}</span>
+	</div>
+</div>
 
 <style lang="scss">
 	.position {
@@ -16,5 +19,54 @@
 		width: calc(var(--percentage) * 1%);
 		left: calc(var(--position-x) * calc(var(--percentage) * 1%));
 		top: calc(var(--position-y) * calc(var(--percentage) * 1%));
+	}
+
+	.n2 {
+		background-color: #eee4da;
+		color: #776e65;
+	}
+	.n4 {
+		background-color: #ede0c8;
+		color: #776e65;
+	}
+	.n8 {
+		background-color: #f2b179;
+		color: #f9f6f2;
+	}
+	.n16 {
+		background-color: #f59563;
+		color: #f9f6f2;
+	}
+	.n32 {
+		background-color: #f67c5f;
+		color: #f9f6f2;
+	}
+	.n64 {
+		background-color: #f65e3b;
+		color: #f9f6f2;
+	}
+	.n128 {
+		background-color: #edcf72;
+		color: #f9f6f2;
+	}
+	.n256 {
+		background-color: #edcc61;
+		color: #f9f6f2;
+	}
+	.n512 {
+		background-color: #edc850;
+		color: #f9f6f2;
+	}
+	.n1024 {
+		background-color: #edc53f;
+		color: #f9f6f2;
+	}
+	.n2048 {
+		background-color: #edc22e;
+		color: #f9f6f2;
+	}
+	.n4096 {
+		background-color: #3c3a32;
+		color: #f9f6f2;
 	}
 </style>
