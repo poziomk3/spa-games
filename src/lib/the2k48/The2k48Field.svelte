@@ -6,10 +6,14 @@
 
 <div
 	style="--position-x:{position[0]};--position-y:{position[1]};--percentage:{100 / fieldsNumber}"
-	class=" cursor-pointer position absolute scale-90 rounded-xl transition-all duration-100 n{value?.toString()}"
+	class=" cursor-pointer position absolute scale-90 rounded-xl transition-all duration-150 bg-white/70 n{value?.toString()}"
 >
 	<div class=" flex flex-col justify-center items-center relative h-full cursor-pointer">
+		
+		{#if value!=0}
 		<span class=" cursor-pointer text-[2rem] text-bold">{value}</span>
+		
+		{/if}
 	</div>
 </div>
 
@@ -21,6 +25,7 @@
 		top: calc(var(--position-y) * calc(var(--percentage) * 1%));
 	}
 
+	
 	.n2 {
 		background-color: #eee4da;
 		color: #776e65;

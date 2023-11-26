@@ -134,7 +134,7 @@
 		).entries();
 	}
 
-	function iterateTiles(type: Arrow):boolean {
+	function iterateTiles(type: Arrow): boolean {
 		let transformed: Array<string> = new Array();
 		let changeFlag = false;
 		for (let [id, position] of iterator(type)) {
@@ -147,7 +147,7 @@
 		return changeFlag;
 	}
 
-	function onKeyDown(e: KeyboardEvent):void {
+	function onKeyDown(e: KeyboardEvent): void {
 		const { key } = e;
 		let changeFlag = false;
 		switch (key) {
@@ -167,7 +167,7 @@
 		if (changeFlag) spawn();
 	}
 
-	onMount(async() => {
+	onMount(async () => {
 		spawn();
 		await tick();
 		spawn();
@@ -177,6 +177,9 @@
 <svelte:window on:keydown={onKeyDown} />
 
 <div class="relative w-[400px] h-[400px] bg-red-200">
+	{#each gameMap as [position, value]}
+		<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
+	{/each}
 	{#each tiles as [id, position] (id)}
 		<The2k48Field {position} value={gameMap.get(position)} {fieldsNumber} />
 	{/each}
