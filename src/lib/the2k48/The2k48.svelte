@@ -5,7 +5,7 @@
 </script>
 
 <div class="h-full flex flex-col w-full justify-center text-center md:items-center items-stretch">
-	<div class="flex flex-row justify-around items-center w-[40%] mx-[1rem] text-[3rem]">
+	<div class="flex flex-row justify-around items-center w-[40%] text-[3rem] mx-auto">
 		<div class="text-[6rem]">2048</div>
 		<div class="flex w-[20rem] bg-[#edc22e]/90 text-black  p-[2rem] rounded-xl justify-start">
 			<div class="">Score:</div>

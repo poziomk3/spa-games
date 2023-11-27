@@ -37,7 +37,7 @@
       ? 'bg-red-700'
       : isThereTarget
         ? 'bg-black'
-        : ''}  bg-opacity-60 flex flex-col justify-center items-center border-4 rounded-xl  active:scale-[.025]"
+        : ''}  bg-opacity-60 flex flex-col justify-center items-center border-4 rounded-xl w-full h-full active:scale-[.025]"
   on:mousedown={() => {
     dispatch("whack", { isMole });
     showHitHandle();
